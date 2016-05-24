@@ -32,9 +32,7 @@ const string STAR = "data/STAR.dat";
 int main(int argc, char **argv){
 
 
-  // wczytywanie blyskow ktore nie daja sie zcalkowac ----------------
-
-  // Sprawdzanie minimalnej liczy argumentow
+  
   if(argc<2){
     cerr << "Try `rc --help' for more information." << endl;
     exit(EXIT_FAILURE);
@@ -53,8 +51,6 @@ int main(int argc, char **argv){
   }
 
 
-  // wczytywanie listy dostepnych triggerow dla ktorych
-  // dostepne sa parametry i mozliwe jest obliczenie redshiftu
   
   vector<string>::iterator st;
 
@@ -89,9 +85,6 @@ int main(int argc, char **argv){
   }
 
 
-  // wczytywanie danych z plikow:
-  // FPAR - parametry zcalkowane w czasie
-  // BPAR - parametry dla poszczegolnych przedzialow czasowych
   
   vector<Par> pfpar,pbpar;
 
@@ -142,9 +135,7 @@ int main(int argc, char **argv){
 
   in3.close();
 
-  // upozatkowanie danych -----------------------------
-  // przydzielanie widm z przedzialow czasowych do poszczegolnych blyskow
-
+  
   vector<Burst> redsh;
   vector<Burst>::iterator rt;
 
@@ -182,7 +173,6 @@ int main(int argc, char **argv){
   in.close();
 
 
-  // porzatkowanie danych do fitowania ----------------------
   
   for(rt = redsh.begin() ; rt != redsh.end() ; rt++){
     
@@ -195,13 +185,11 @@ int main(int argc, char **argv){
     rt->est = *et;
   }
   
-  // calkowanie widma ---------------------------------------
   for(rt = redsh.begin() ; rt != redsh.end() ; rt++)
     rt -> integration();
 
 
-  // oblicznie redshiftow
-
+  
   for(int i = 0 ; i < (int)redsh.size() ; i++){
     
     redsh[i].compute_redshift();
