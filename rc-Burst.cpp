@@ -348,11 +348,11 @@ void compute_redshift_error(Burst &b){
     
     
     
-    mc.integration(); // calkowanie
-    rds = mc.compute_redshift(); // obliczanie Z
+    mc.integration();
+    rds = mc.compute_redshift();
 
 
-    v2.push_back(rds); // zapisywanie do tabeli
+    v2.push_back(rds);
 
   }
 
