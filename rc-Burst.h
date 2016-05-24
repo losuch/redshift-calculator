@@ -4,7 +4,7 @@
 #include "rc-Par.h"
 #include "rc-Est.h"
 
-// parametry estymacji funkcji: z(X) = 10^( A*log10(X)^2 + B*log10(X) + C )
+// estimation: z(X) = 10^( A*log10(X)^2 + B*log10(X) + C )
 
 #define _A   -0.055462
 #define _B   -0.373666
@@ -48,16 +48,15 @@ class Burst: Par, Est{
     //bpar.empty();
   }      // destructor
 
-  // metoda wczytujace dane do klasy z pliku
+  
   int read_burst(const Par&,const std::vector<Par>&);
 
   std::string& trigger(void);
   
-  // metoda calkujaca funkcje banda 
-  // (wyznaczenie strumienia fotonow i energji)
+  
   double integration(void);
   
-  // metoda obliczajaca przesuniecie ku czerwieni
+  
   double compute_redshift(void);
 
   Burst rand(void)const;
